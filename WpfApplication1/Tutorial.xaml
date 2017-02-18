@@ -1,0 +1,130 @@
+﻿<Window x:Class="WpfApplication1.Tutorial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Help" Height="600" Width="1187" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175*" />
+            <ColumnDefinition Width="603*" />
+        </Grid.ColumnDefinitions>
+        <TreeView SelectedItemChanged="treeView1_SelectedItemChanged" Height="562" HorizontalAlignment="Left"  Name="treeView1" VerticalAlignment="Top" Width="294" Grid.ColumnSpan="2">
+            <TreeViewItem Name="Manifestacija" IsExpanded="False">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/man.png" Height="19" Width="16" />
+                        <Separator Width="5"></Separator>
+                        <TextBlock Foreground="Red" FontSize="15" Text="Šta je to manifestacija" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+
+            <TreeViewItem Name="Tip" IsExpanded="False">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/manifest.png" Height="19" Width="16" />
+                        <Separator Width="5"></Separator>
+                        <TextBlock Foreground="Red" FontSize="15" Text="Šta je to tip manifestacije" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+
+            <TreeViewItem Name="Etiketa" IsExpanded="False">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/tag.png" Height="19" Width="16" />
+                        <Separator Width="5"></Separator>
+                        <TextBlock Foreground="Red" FontSize="15" Text="Šta je to etiketa" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+
+            <TreeViewItem Name="Unos" IsExpanded="False">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/unos.png" />
+                        <Separator Width="5"></Separator>
+                        <TextBlock Foreground="Green" FontSize="15" Text="Kako uneti entitet" />
+                        
+                    </StackPanel>
+                </TreeViewItem.Header>
+
+                <TreeViewItem Name="UnosM">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/man.png" />
+                            <TextBlock Text="Kako uneti manifestaciju" Foreground="Green" />
+                            
+                        </StackPanel>
+                        
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem Name="UnosT">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/manifest.png" />
+                            <TextBlock Text="Kako uneti tip manifestacije" Foreground="Green" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem Name="UnosE">
+                    <TreeViewItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Images/tag.png" />
+                            <TextBlock Text="Kako uneti etiketu" Foreground="Green" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+
+            </TreeViewItem>
+
+            <TreeViewItem Name="Brisanje" IsExpanded="False">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/delete.png" Height="19" Width="16" />
+                        <Separator Width="5"></Separator>
+                        <TextBlock Foreground="Red" FontSize="15" Text="Kako obrisati entitet" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+            
+            <TreeViewItem Name="Izmena" IsExpanded="False">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/izmeni.png" />
+                        <Separator Width="5"></Separator>
+                        <TextBlock Foreground="Blue" FontSize="15" Text="Kako izmeniti entitet" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+
+            <TreeViewItem Name="Drag" IsExpanded="False">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/drag.png" />
+                        <Separator Width="5"></Separator>
+                        <TextBlock Foreground="DimGray" FontSize="15" Text="Kako postaviti manifestaciju na mapu" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+
+            <TreeViewItem Name="Info" IsExpanded="False">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/info.png" Height="19" Width="14" />
+                        <Separator Width="5"></Separator>
+                        <TextBlock Foreground="Purple" FontSize="15" Text="Kako videti informacije o manifestaciji" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+
+        </TreeView>
+        
+        
+        <TextBlock TextWrapping="Wrap" FontFamily="Arial" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="524" HorizontalAlignment="Left" Text="{Binding Tekst}" Name="textBox1" VerticalAlignment="Top" Width="322" Margin="38,38,0,0" Grid.Column="1" />
+        <Image Grid.Column="1" Height="561" Stretch="Fill" HorizontalAlignment="Left" Margin="366,0,0,0" Name="image1" VerticalAlignment="Top" Width="537" />
+        <TextBlock Grid.Column="1" Height="37" HorizontalAlignment="Left" Margin="38,0,0,0" Name="textBlock1" Text="{Binding Naslov}" VerticalAlignment="Top" Width="324" />
+    </Grid>
+</Window>

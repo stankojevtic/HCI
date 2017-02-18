@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfApplication1.DodajTip1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DodajTip" Height="500" Width="500" Name="dodajtip1" WindowStartupLocation="CenterScreen"  Icon="/WpfApplication1;component/Images/2p4i.png">
+
+    <Grid DataContext="{Binding}" FlowDirection="LeftToRight" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="74*" />
+            <RowDefinition Height="77*" />
+            <RowDefinition Height="114*" />
+            <RowDefinition Height="139*"/>
+            <RowDefinition Height="56*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="198*" />
+            <ColumnDefinition Width="280*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Height="37" Margin="12,20,32,17" Width="154">Unesite ID tipa:</TextBlock>
+        <TextBox KeyDown="idTipa_KeyDown"  Name="idTipa" Grid.Column="1" VerticalAlignment="Center" LostFocus="idTipa_LostFocus" Margin="12,20,120,28" Height="26"></TextBox>
+        <Popup Name="popup1" PlacementTarget="{Binding ElementName=idTipa}" Placement="Right" HorizontalOffset="50" Margin="12,20,120,28" >
+            <StackPanel Background="Red" Orientation="Horizontal">
+                <Image Source="images/arrow1.png"></Image>
+                <TextBlock Name="textPopup" FontSize="20">Unesite ID i stisnite enter</TextBlock>
+            </StackPanel>
+        </Popup>
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Height="36" Margin="12,23,50,19" Width="136">Unesite ime tipa:</TextBlock>
+        <TextBox Name="imeTipa" KeyDown="imeTipa_KeyDown" LostFocus="imeTipa_LostFocus" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="8,15,120,18" Height="28" ></TextBox>
+        <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Margin="12,41,17,53" Width="169">Unesite ikonicu tipa:</TextBlock>
+        <Button Name="NovaIkonica" Grid.Row="2" Grid.Column="1" Margin="95,28,39,46" Click="Button_Click">Nova ikonica</Button>
+        <TextBlock Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Margin="12,50,72,69">Unesite opis tipa:</TextBlock>
+        <TextBox TextWrapping="Wrap" KeyDown="opisTipa_KeyDown" LostFocus="opisTipa_LostFocus" Name="opisTipa" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="8,24,20,24" Height="91"></TextBox>
+        <Button Name="Potvrdi" Grid.Row="4" Grid.ColumnSpan="2" Click="Button_Click_1" Margin="87,0,101,12">Potvrdi</Button>
+        <Image Name="ikonicaTipa" Grid.Column="1" Grid.Row="2" Height="43" HorizontalAlignment="Left" Margin="8,26,0,0" Stretch="Fill" VerticalAlignment="Top" Width="57" />
+        <Border BorderBrush="#1A000000" BorderThickness="1" Grid.Column="1" Grid.Row="2" Height="43" HorizontalAlignment="Left" Margin="8,25,0,0" Name="border1" VerticalAlignment="Top" Width="57" />
+        <TextBlock Grid.Column="1" Height="29" HorizontalAlignment="Left" Margin="164,25,0,0" Name="textBlock1" Text="{Binding GreskaID}" Foreground="Red" VerticalAlignment="Top" Width="110" />
+        <TextBlock Grid.Column="1" Grid.Row="1" Height="27" HorizontalAlignment="Left" Margin="168,32,0,0" Name="textBlock2" Text="{Binding GreskaIme}" Foreground="Red" VerticalAlignment="Top" Width="106" />
+        <TextBlock Grid.Column="1" Grid.Row="2" Height="34" HorizontalAlignment="Left" Margin="106,75,0,0" Name="textBlock3" Text="{Binding GreskaIkonica}" Foreground="Red" VerticalAlignment="Top" Width="110" />
+    </Grid>
+</Window>

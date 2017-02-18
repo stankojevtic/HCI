@@ -1,0 +1,115 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:WpfApplication1"
+        
+        Title="Manifestacije grada" l:HelpProvider.HelpKey="Dragg" Height="500" Width="700"  WindowStartupLocation="CenterScreen" Icon="/WpfApplication1;component/Images/2p4i.png">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+        <CommandBinding Command="l:MainWindow.OpenManifest" CanExecute="CommandBinding_CanExecute" Executed="CommandBinding_Executed_1"/>
+        <CommandBinding Command="l:MainWindow.OpenEtikete" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_2"/>
+        <CommandBinding Command="l:MainWindow.OpenTipa" CanExecute="CommandBinding_CanExecute_3" Executed="CommandBinding_Executed_3"/>
+        <CommandBinding Command="l:MainWindow.OpenPregledM" CanExecute="CommandBinding_CanExecute_4" Executed="CommandBinding_Executed_4"/>
+        <CommandBinding Command="l:MainWindow.OpenPregledE" CanExecute="CommandBinding_CanExecute_5" Executed="CommandBinding_Executed_5"/>
+        <CommandBinding Command="l:MainWindow.OpenPregledT" CanExecute="CommandBinding_CanExecute_6" Executed="CommandBinding_Executed_6"/>
+        
+    </Window.CommandBindings>
+    <DockPanel>
+
+        <Menu DockPanel.Dock ="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch" Background="DarkGray"></DockPanel>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+           
+            
+            <MenuItem Header="Unos" FontSize="13" Foreground="Honeydew">
+                <MenuItem Header="Nova manifestacija" InputGestureText="CTRL + M" Click="MenuItem_Click_1" Foreground="Black">
+                    <MenuItem.Background>
+                        <SolidColorBrush />
+                    </MenuItem.Background>
+                </MenuItem>
+                
+                <MenuItem Header="Nova etiketa" InputGestureText="CTRL + E" Click="MenuItem_Click_2" Foreground="Black">
+                    <MenuItem.Background>
+                        <SolidColorBrush />
+                    </MenuItem.Background>
+                </MenuItem>
+                <MenuItem Header="Novi tip manifestacije" InputGestureText="CTRL + T" Foreground="Black" Click="MenuItem_Click">
+                    <MenuItem.Background>
+                        <SolidColorBrush />
+                    </MenuItem.Background>
+                </MenuItem>
+
+            </MenuItem>
+
+
+            <MenuItem Header="Pregled" FontSize="13" Foreground="Honeydew">
+                <MenuItem Header="Manifestacije" InputGestureText="Alt + M" Foreground="Black" Click="MenuItem_Click_4">
+                     <MenuItem.Background>
+                      <SolidColorBrush />
+                    </MenuItem.Background>
+                 </MenuItem>
+                
+                <MenuItem Header="Etikete" Foreground="Black" InputGestureText="Alt + E" Click="MenuItem_Click_5">
+                    <MenuItem.Background>
+                        <SolidColorBrush />
+                    </MenuItem.Background>
+                </MenuItem>
+                <MenuItem Header="Tipovi" InputGestureText="Alt + T" Foreground="Black" Click="MenuItem_Click_6">
+                    <MenuItem.Background>
+                        <SolidColorBrush />
+                    </MenuItem.Background>
+                </MenuItem>
+                
+            </MenuItem>
+
+            <MenuItem Header="Pomoć" FontSize="13" Foreground="Honeydew" Click="MenuItem_Click_3">
+                <MenuItem.Background>
+                    <SolidColorBrush />
+                </MenuItem.Background>
+
+            </MenuItem>
+
+            <MenuItem Header="Tutorijal" FontSize="13" HorizontalAlignment="Right" Foreground="Honeydew">
+                <MenuItem Header="Unos tipa" Foreground="Black" Click="MenuItem_Click_7">
+                    <MenuItem.Background>
+                        <SolidColorBrush />
+                    </MenuItem.Background>
+
+                </MenuItem>
+            </MenuItem>
+
+        </Menu>
+        
+        <Grid Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="122*" />
+
+                <ColumnDefinition Width="556*" />
+            </Grid.ColumnDefinitions>
+            <ListView Name="listVju" Background="LightYellow" ItemsSource="{Binding Path=manifestacijeZaDrag}"  SelectedItem="{Binding Path=SelektovanaManifestacija}" PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown" MouseMove="ListView_MouseMove" PreviewMouseRightButtonDown="ListView_PreviewMouseRightButtonDown" Margin="0,20,0,0"> 
+                <ListView.ItemTemplate>  
+                    <DataTemplate>  
+                        <WrapPanel>
+                            <Image Source="{Binding ikonicaMa}" MaxHeight="16" MaxWidth="16" Margin="1"/>
+                            
+                            <TextBlock Text="{Binding ID}"  ToolTip="{Binding Datum}" />
+                            
+                            
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>  
+            </ListView>
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" Grid.Row="0" Grid.Column="1" >
+                <Canvas  Name="c" AllowDrop="True" DragEnter="ListView_DragEnter" Drop="ListView_Drop" PreviewMouseRightButtonUp="c_PreviewMouseRightButtonDown"  PreviewMouseLeftButtonDown="imageControl_MouseLeftButtonDown" Width="1252" Height="800" >
+                    <Image Source="images/ns.jpg" Width="1252" Stretch="Fill" Height="800"></Image>
+                </Canvas>
+            </ScrollViewer>
+            <TextBlock Background="Black" Height="14" HorizontalAlignment="Left" Name="textBlock1" Text="Manifestacije" TextAlignment="Center" Foreground="White" VerticalAlignment="Top" Width="122" />
+        </Grid>
+    </DockPanel>
+   
+</Window>
+

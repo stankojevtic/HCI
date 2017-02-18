@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfApplication1.PregledTipova"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PregledTipova" Height="363" Width="636" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Icon="/WpfApplication1;component/Images/2p4i.png">
+    
+    <Grid >
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="163*" />
+            <RowDefinition Height="161*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dgrMain" ItemsSource="{Binding Path=listaTipova}" IsReadOnly="True" AutoGenerateColumns="False"  Margin="0,0,0,27">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID:" Width="100" Binding="{Binding id}"></DataGridTextColumn>
+                <DataGridTextColumn  Header="Ime:" Width="100" Binding="{Binding ime}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Ikonica" Width="auto" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image  Source="{Binding Path=ikonica}" Stretch="Fill" Width="40" Height="40"></Image>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                </DataGrid.Columns>
+
+        </DataGrid>
+        <Grid Name="dgrMain1" Grid.Column="0" Grid.Row="1" DataContext="{Binding ElementName=dgrMain,Path=SelectedItem}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="13"/>
+                <RowDefinition Height="83*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="52" />
+                <ColumnDefinition Width="562*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text=" ID:"></TextBlock>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text=" Ime:"></TextBlock>
+            <TextBlock Grid.Row="2" Height="22" Text=" Opis:"></TextBlock>
+            <TextBlock Grid.Row="6" Margin="0,0,562,0" Grid.ColumnSpan="2" Text=" Ikonica:"></TextBlock>
+
+
+
+            <TextBox Name="idOdSelektovanog" Grid.Column="1" Text="{Binding Path=id}" Margin="0,0,350,0"></TextBox>
+            <TextBox Name="imeOdSelektovanog" Grid.Column="1" Grid.Row="1" Text="{Binding Path=ime}" Margin="0,0,350,0"></TextBox>
+            <TextBox  Grid.Column="1" Grid.Row="2" Text="{Binding Path=opis}" Margin="0,0,350,0"></TextBox>
+            <Image Grid.Column="1" Grid.Row="6" Source="{Binding ikonica}" Margin="6,0,504,45"> </Image>
+            <Button   Content="Obrisi" Grid.Column="1" Height="27" HorizontalAlignment="Left" Margin="270,17,0,0" Name="button1" VerticalAlignment="Top" Width="57" Grid.RowSpan="2" Click="button1_Click" />
+            <Button   Content="Izmeni" Grid.RowSpan="2" Height="27" HorizontalAlignment="Left" Margin="350,17,0,0" Name="button2" VerticalAlignment="Top" Width="57" Grid.Column="1" Click="button1_Click1"/>
+            <Border  BorderThickness="1" Grid.Row="5" Height="57" HorizontalAlignment="Left" Name="border1" VerticalAlignment="Top" Width="170" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+            <Button  Content="Novi tip" Grid.RowSpan="2" Height="27" HorizontalAlignment="Left" Margin="433,17,0,0" Name="button3" VerticalAlignment="Top" Width="91" Grid.Column="1" Click="button3_Click" />
+        </Grid>
+    </Grid>
+</Window>

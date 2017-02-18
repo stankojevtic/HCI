@@ -1,0 +1,68 @@
+﻿<Window x:Class="WpfApplication1.Izmena.IzmenaEtiketa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="Izmena etikete" Height="300" Width="500"  WindowStartupLocation="CenterScreen" Icon="/WpfApplication1;component/Images/2p4i.png">
+    <Window.Resources>
+        <Style x:Key="fancyButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#373737" />
+            <Setter Property="Foreground" Value="LightBlue" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <Path x:Name="PathIcon" Width="15" Height="25" Stretch="Fill" Fill="#4C87B3" HorizontalAlignment="Left" Margin="17,0,0,0" Data="F1 M 30.0833,22.1667L 50.6665,37.6043L 50.6665,38.7918L 30.0833,53.8333L 30.0833,22.1667 Z "/>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E59400" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="OrangeRed" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid DataContext="{Binding}" FlowDirection="LeftToRight"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45*" />
+            <RowDefinition Height="46*" />
+            <RowDefinition Height="62*" />
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="50*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Margin="52,12,60,1" Width="127" Height="32">Unesite ID etikete:</TextBlock>
+        <TextBox Name="idEtikete" Grid.Column="1" VerticalAlignment="Center" Margin="0,12,110,12"></TextBox>
+
+        <TextBlock  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Height="33" Margin="52,11,54,2">Unesite opis etikete:</TextBlock>
+        <TextBox Name="opisEtikete" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="0,12,110,12"></TextBox>
+
+        <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" Height="28" Margin="52,12,52,22">Unesite boju etikete:</TextBlock>
+        <xctk:ColorPicker Name="bojaEtikete" VerticalAlignment="Top" RenderTransformOrigin="2.587,2.691" Margin="0,12,110,32" Grid.Column="1" Grid.Row="2" />
+
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="151,46,159,12" Click="Button_Click" Grid.RowSpan="2" Style="{StaticResource ResourceKey=fancyButtonStyle}">Potvrdi</Button>
+        <TextBlock Grid.Column="1" Height="21" HorizontalAlignment="Left" Margin="136,13,0,0" Name="textBlock1" Text="{Binding GreskaID}" Foreground="Red" VerticalAlignment="Top" Width="104" />
+        <TextBlock Grid.Column="1" Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="136,15,0,0" Name="textBlock2" Text="{Binding GreskaBoja}" Foreground="Red" VerticalAlignment="Top" Width="103" />
+
+    </Grid>
+</Window>
+
